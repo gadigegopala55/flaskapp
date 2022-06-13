@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+
+.home-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 31px;
+    color: blue;
+}
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+.post-container{
+    margin: 20px;
+    padding: 10px;
+}
+
+.login{
+    align-items: center;
+    margin: 20px;
+}
+
+.submit-button{
+    margin-top: 23px;
+}
+
+.logout{
+    color: white;
+}
+
+.buttons{
+    margin: 40px;
+    padding: 40px;
+}
+
+.subscriberslist-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 31px;
+    color: green;
+}
+
+.message{
+    color: green;
+    margin: 5px;
+}

@@ -1,0 +1,19 @@
+{% extends 'navbar.html' %}
+{% block head %}
+<title>Home Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock%}
+{% block body %}
+<div class="home-container">
+    <h1>Welcome to My Travelling Blog</h1>
+    <br/>
+    <h1>Traveller - Gopala Krishna</h1>
+</div>
+{% for char in mydata %}
+    <div class="post-container">
+        <h1>{{char[0]}}</h1>
+        <p>{{char[1]}}</p>
+        <hr/>
+    </div>
+    {% endfor %}
+{% endblock%}

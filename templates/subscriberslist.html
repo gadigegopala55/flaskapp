@@ -1,0 +1,18 @@
+{% extends 'navbar.html' %}
+{% block head %}
+<title>Subscribers List</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock%}
+{% block body %}
+<div class="subscriberslist-container">
+    <h1>Subscribers List</h1>
+</div>
+{% for char in mydata %}
+    <div class="post-container">
+        <p>Name : {{char[0]}}</p>
+        <p>email : {{char[1]}}</p>
+        <p>phone number : {{char[2]}}</p>
+        <hr/>
+    </div>
+    {% endfor %}
+{% endblock%}

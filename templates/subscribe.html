@@ -1,0 +1,17 @@
+{% extends 'navbar.html' %}
+{% block head %}
+<title>Subscribe Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock%}
+{% block body %}
+<form class="home-container" method="post">
+    <p>Name:</p>
+    <input type="text" name="name"/> <br/>
+    <p>email:</p>
+    <input type="text" name="email"/> <br/>
+    <p>Phone Number:</p>
+    <input type="number" name="phonenumber"/> <br/>
+    <p class="message">{{message}}</p>
+    <p><input type="submit" value="submit"/></p>
+</form>
+{% endblock%}

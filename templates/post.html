@@ -1,0 +1,37 @@
+{% extends 'navbar.html' %}
+{% block head %}
+<title>post Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock%}
+{% block body %}
+<div class="login-container">
+    <div class="login">
+        <h1>Hi Gopala Krishna</h1>
+        <h1>Post the data</h1>
+    </div>
+    <div class="form">
+        <form method="post">
+            <p>Title:</p>
+            <input type="text" name="title"/> <br/>
+            <p>description:</p>
+            <input type="text" name="description"/> <br/>
+            <p class="message">{{message}}</p>
+            <p><input type="submit" value="post" class="submit-button"/></p>
+        </form>
+    </div>
+    <button action="/logout" class="btn btn-danger">
+        <a href="/logout" class="logout">Logout</a>
+    </button>
+    <div class="buttons">
+        <button action="/delete" class="btn btn-danger">
+            <a href="/delete" class="logout">Delete</a>
+        </button>
+        <button action="/put" class="btn btn-primary">
+            <a href="/put" class="logout">Update</a>
+        </button>
+        <button action="/subscriberslist" class="btn btn-success">
+            <a href="/subscriberslist" class="logout">Subscribers List</a>
+        </button>
+    </div>
+</div>
+{% endblock%}
