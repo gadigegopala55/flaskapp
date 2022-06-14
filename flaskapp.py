@@ -195,6 +195,13 @@ def subscribe():
         conn = connection.cursor()
         conn.execute(f'INSERT INTO subscribers VALUES("{name}","{email}",{phonenumber})')
         connection.commit()
+        msg = Message(
+            'Traveling Blog Notification',
+            sender ='demomail224@gmail.com',
+            recipients = [f'{email}']
+        )
+        msg.body = f'Thank you {name} , You will receive the Notification whenever new Post is Poated in Blog'
+        mail.send(msg)
         return render_template("subscribe.html",message=message)
     return render_template("subscribe.html",message="")
 
@@ -249,6 +256,34 @@ def subscriberslist():
         mydata = conn.fetchall()
         return render_template("subscriberslist.html",mydata = mydata)
     return render_template("subscriberslist.html",mydata = mydata)
+
+#subscribers data delete
+@app.route("/subscriberdelete")
+def subscribersdelete():
+    connection = sqlite3.connect("admin.db")
+    conn = connection.cursor()
+    conn.execute("SELECT * FROM admin")
+    mydata = conn.fetchone()
+    data = mydata[3]
+    if data == "failure":
+        return redirect("/login")
+    else:
+        name = request.args.get("name")
+        if not name:
+            return render_template("subscriberdelete.html",message="* Enter Name")
+        connection = sqlite3.connect("admin.db")
+        conn = connection.cursor()
+        conn.execute(f'SELECT * FROM subscribers WHERE name="{name}"')
+        mydata = conn.fetchall()
+        length = len(mydata)
+        if length == 0:
+            return render_template("delete.html",message="* Enter valid name")
+        else:
+            conn.execute(f'DELETE FROM subscribers WHERE name="{name}"')
+            connection.commit()
+            return render_template("delete.html",message="Deleted data successfully")
+    return render_template("delete.html",message="")
+
 
 if __name__=="__main__":
     app.run(debug=True)

@@ -1,4 +1,4 @@
-{% extends 'navbar.html' %}
+{% extends 'postnavbar.html' %}
 {% block head %}
 <title>post Page</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
@@ -19,9 +19,6 @@
             <p><input type="submit" value="post" class="submit-button"/></p>
         </form>
     </div>
-    <button action="/logout" class="btn btn-danger">
-        <a href="/logout" class="logout">Logout</a>
-    </button>
     <div class="buttons">
         <button action="/delete" class="btn btn-danger">
             <a href="/delete" class="logout">Delete</a>
