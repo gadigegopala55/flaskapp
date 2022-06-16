@@ -63,24 +63,27 @@ def home():
 #Login Page
 @app.route("/login",methods=["GET","POST"])
 def login():
-    connection = sqlite3.connect("admin.db")
-    conn = connection.cursor()
-    conn.execute("SELECT * FROM admin")
-    mydata = conn.fetchone()
-    data = mydata[3]
-    if data == "failure":
-        if request.method == "POST":
-            userid = request.form['userid']
-            password = request.form['password']
-            if userid == "gopal" and password == "krishna":
-                conn.execute("UPDATE admin SET userlogin='success'")
-                connection.commit()
-                return redirect("/post")
-            else:
-                return render_template("login.html",message="* Enter valid Details")
-    else:
-        return redirect("/post")
-    return render_template("login.html",message="")
+    try:
+        connection = sqlite3.connect("admin.db")
+        conn = connection.cursor()
+        conn.execute("SELECT * FROM admin")
+        mydata = conn.fetchone()
+        data = mydata[3]
+        if data == "failure":
+            if request.method == "POST":
+                userid = request.form['userid']
+                password = request.form['password']
+                if userid == "gopal" and password == "krishna":
+                    conn.execute("UPDATE admin SET userlogin='success'")
+                    connection.commit()
+                    return redirect("/post")
+                else:
+                    return render_template("login.html",message="* Enter valid Details")
+        else:
+            return redirect("/post")
+        return render_template("login.html",message="")
+    except:
+        return render_template("login.html",message = "Something Went Wrong")
 
 # Posting a blog
 @app.route("/post",methods=["GET","POST"])
